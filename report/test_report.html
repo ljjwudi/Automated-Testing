@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>My Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>My Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2024-01-16 17:46:57</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:08.440589</p>
+<p class='attribute'><strong>Status:</strong> Pass 2 Failure 26 Error 6</p>
+
+<p class='description'>This demonstrates the report output by HTMLTestRunner.</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>case.QA.TestQA</td>
+    <td>7</td>
+    <td>0</td>
+    <td>6</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c1',7)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_qa_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        fail</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 32, in test_search_qa_combination
+    self.assertIn(expect_res, response.text)  # 断言data包含expect_res
+AssertionError: '"answer":["您的问题已记录，感谢您的支持与理解"]' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 32, in test_search_qa_combination
+    self.assertIn(expect_res, response.text)  # 断言data包含expect_res
+AssertionError: '"answer":["您的问题已记录，感谢您的支持与理解"]' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_qa_by_question</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        fail</a>
+
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 44, in test_search_qa_by_question
+    self.assertIn(expect_res, response.text)  # 断言data包含expect_res
+AssertionError: '"paginate":{"data":[{"id":958141,"group_name":"自动化分组","question":["测试1124"],"answer":["收到"],"tts_mark_answer":["收到"],"category_id":"node-2-1606975858464","is_open":true,"answer_type":1,"active_time_option":1,"active_start_time":"","active_end_time":"","enable_recommend":1,"enable_prompt":1,"project":["test1113"]}],"current_page":1,"per_page":10,"total":1}' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 44, in test_search_qa_by_question
+    self.assertIn(expect_res, response.text)  # 断言data包含expect_res
+AssertionError: '"paginate":{"data":[{"id":958141,"group_name":"自动化分组","question":["测试1124"],"answer":["收到"],"tts_mark_answer":["收到"],"category_id":"node-2-1606975858464","is_open":true,"answer_type":1,"active_time_option":1,"active_start_time":"","active_end_time":"","enable_recommend":1,"enable_prompt":1,"project":["test1113"]}],"current_page":1,"per_page":10,"total":1}' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_qa_by_answer</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.3')" >
+        fail</a>
+
+    <div id='div_ft1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 56, in test_search_qa_by_answer
+    self.assertIn(expect_res, response.text)  # 断言data包含expect_res
+AssertionError: '"paginate":{"data":[{"id":958142,"group_name":"自动化分组","question":["问题1124"],"answer":["答案1124"],"tts_mark_answer":["答案1124"],"category_id":"node-2-1606975858464","is_open":true,"answer_type":1,"active_time_option":1,"active_start_time":"","active_end_time":"","enable_recommend":1,"enable_prompt":1,"project":["test1113"]}],"current_page":1,"per_page":10,"total":1}' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 56, in test_search_qa_by_answer
+    self.assertIn(expect_res, response.text)  # 断言data包含expect_res
+AssertionError: '"paginate":{"data":[{"id":958142,"group_name":"自动化分组","question":["问题1124"],"answer":["答案1124"],"tts_mark_answer":["答案1124"],"category_id":"node-2-1606975858464","is_open":true,"answer_type":1,"active_time_option":1,"active_start_time":"","active_end_time":"","enable_recommend":1,"enable_prompt":1,"project":["test1113"]}],"current_page":1,"per_page":10,"total":1}' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_new_qa</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4')" >
+        fail</a>
+
+    <div id='div_ft1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 85, in test_new_qa
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 85, in test_new_qa
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_CheckRelation</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.5')" >
+        error</a>
+
+    <div id='div_ft1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 97, in test_CheckRelation
+    qa_id = str(jsonData['data']['paginate']['data'][0]['id'])
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 97, in test_CheckRelation
+    qa_id = str(jsonData['data']['paginate']['data'][0]['id'])
+TypeError: 'NoneType' object is not subscriptable
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_delete_qa</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.6')" >
+        fail</a>
+
+    <div id='div_ft1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 126, in test_delete_qa
+    assert_equal(response_delete_qa, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 126, in test_delete_qa
+    assert_equal(response_delete_qa, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_qa_id</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.7')" >
+        fail</a>
+
+    <div id='div_ft1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 138, in test_search_qa_id
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\QA.py", line 138, in test_search_qa_id
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>case.HomePage.TestHomePage</td>
+    <td>8</td>
+    <td>0</td>
+    <td>5</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c2',8)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_AllProjects</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        error</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 106, in test_AllProjects
+    self.assertIn(expect_res, jsonData['data'])  # 断言data包含expect_res
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 1176, in assertIn
+    if member not in container:
+TypeError: argument of type 'NoneType' is not iterable
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 106, in test_AllProjects
+    self.assertIn(expect_res, jsonData['data'])  # 断言data包含expect_res
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\unittest\case.py", line 1176, in assertIn
+    if member not in container:
+TypeError: argument of type 'NoneType' is not iterable
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_BasicInfo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        fail</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 55, in test_BasicInfo
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 55, in test_BasicInfo
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_Config</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.3')" >
+        fail</a>
+
+    <div id='div_ft2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 78, in test_Config
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 78, in test_Config
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_Corner</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.4')" >
+        fail</a>
+
+    <div id='div_ft2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 90, in test_Corner
+    self.assertIsNotNone(jsonData['data'])  # 断言data中数据不为空
+AssertionError: unexpectedly None
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 90, in test_Corner
+    self.assertIsNotNone(jsonData['data'])  # 断言data中数据不为空
+AssertionError: unexpectedly None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_Count</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.5')" >
+        fail</a>
+
+    <div id='div_ft2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 130, in test_Count
+    self.assertIsNotNone(jsonData['data'])  # 断言data中的phone_line数据不为空
+AssertionError: unexpectedly None
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 130, in test_Count
+    self.assertIsNotNone(jsonData['data'])  # 断言data中的phone_line数据不为空
+AssertionError: unexpectedly None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_IsLogged</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.6')" >
+        fail</a>
+
+    <div id='div_ft2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 44, in test_IsLogged
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 44, in test_IsLogged
+    assert_equal(response, 200, expect_res)
+  File "C:\Users\Administrator\PycharmProjects\demo\common\ApiTest.py", line 24, in assert_equal
+    assert response.text == expected_response_data
+AssertionError
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_Permissions</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.7')" >
+        error</a>
+
+    <div id='div_ft2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 64, in test_Permissions
+    self.assertIsNotNone(jsonData['data']['permissions'])  # 断言data中permissions数据不为空
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 64, in test_Permissions
+    self.assertIsNotNone(jsonData['data']['permissions'])  # 断言data中permissions数据不为空
+TypeError: 'NoneType' object is not subscriptable
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_PhoneLine</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.8')" >
+        error</a>
+
+    <div id='div_ft2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.8: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 117, in test_PhoneLine
+    self.assertIsNotNone(jsonData['data']['phone_line'])  # 断言data中的phone_line数据不为空
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 117, in test_PhoneLine
+    self.assertIsNotNone(jsonData['data']['phone_line'])  # 断言data中的phone_line数据不为空
+TypeError: 'NoneType' object is not subscriptable
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>case.RecordManagement.TestRecordManagement</td>
+    <td>17</td>
+    <td>0</td>
+    <td>15</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c3',17)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_CalloutTaskList</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        fail</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 322, in test_CalloutTaskList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 322, in test_CalloutTaskList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_MessageProjectList</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        fail</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 251, in test_MessageProjectList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 251, in test_MessageProjectList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_OutboundTaskList</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.3')" >
+        fail</a>
+
+    <div id='div_ft3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 337, in test_OutboundTaskList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 337, in test_OutboundTaskList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_TableHeader</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.4')" >
+        fail</a>
+
+    <div id='div_ft3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 381, in test_TableHeader
+    self.assertIn(expect_res, response.text)
+AssertionError: '"call_type":[{"text":"机器","value":1},{"text":"机器/人工","value":2},{"text":"人工","value":3}],"call_io":[{"text":"呼入","value":1},{"text":"呼出","value":2}],"call_status":[{"text":"通话中","value":1},{"text":"通话结束","value":2}],"operator":[{"text":"移动","value":1},{"text":"联通","value":2},{"text":"电信","value":3}],"customer_type":[{"text":"新客户","value":1},{"text":"老客户","value":2}]' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 381, in test_TableHeader
+    self.assertIn(expect_res, response.text)
+AssertionError: '"call_type":[{"text":"机器","value":1},{"text":"机器/人工","value":2},{"text":"人工","value":3}],"call_io":[{"text":"呼入","value":1},{"text":"呼出","value":2}],"call_status":[{"text":"通话中","value":1},{"text":"通话结束","value":2}],"operator":[{"text":"移动","value":1},{"text":"联通","value":2},{"text":"电信","value":3}],"customer_type":[{"text":"新客户","value":1},{"text":"老客户","value":2}]' not found in '{"code":102,"data":null,"msg":"请重新登录"}'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_TelephoneProjectList</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.5')" >
+        fail</a>
+
+    <div id='div_ft3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 267, in test_TelephoneProjectList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 267, in test_TelephoneProjectList
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_call_index_by_AutoOutBound</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.6')" >
+        fail</a>
+
+    <div id='div_ft3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 64, in test_call_index_by_AutoOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454199, '[7220 chars]ess'}
+Diff is 18638 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 64, in test_call_index_by_AutoOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454199, '[7220 chars]ess'}
+Diff is 18638 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_call_index_by_HandOutBound</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.7')" >
+        fail</a>
+
+    <div id='div_ft3.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 53, in test_call_index_by_HandOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454246, '[4123 chars]ess'}
+Diff is 10057 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 53, in test_call_index_by_HandOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454246, '[4123 chars]ess'}
+Diff is 10057 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_call_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.8')" >
+        fail</a>
+
+    <div id='div_ft3.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.8: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 42, in test_call_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454186, '[4009 chars]ess'}
+Diff is 9943 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 42, in test_call_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454186, '[4009 chars]ess'}
+Diff is 9943 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.9' class='none'>
+    <td class='errorCase'><div class='testcase'>test_export_record</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.9')" >
+        error</a>
+
+    <div id='div_ft3.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.9: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 285, in test_export_record
+    file_id = jsonData['data'][0]['id']  # 获取文件下载接口所需的参数id
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 285, in test_export_record
+    file_id = jsonData['data'][0]['id']  # 获取文件下载接口所需的参数id
+TypeError: 'NoneType' object is not subscriptable
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_by_project_closed</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.10')" >
+        fail</a>
+
+    <div id='div_ft3.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.10: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 99, in test_index_by_project_closed
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454222, '[5057 chars]ess'}
+Diff is 12576 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 99, in test_index_by_project_closed
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454222, '[5057 chars]ess'}
+Diff is 12576 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_by_project_deleted</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.11')" >
+        fail</a>
+
+    <div id='div_ft3.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.11: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 110, in test_index_by_project_deleted
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181456670, '[3473 chars]ess'}
+Diff is 8399 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 110, in test_index_by_project_deleted
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181456670, '[3473 chars]ess'}
+Diff is 8399 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.12' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_no_result_by_keyword</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.12')" >
+        fail</a>
+
+    <div id='div_ft3.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.12: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 191, in test_index_no_result_by_keyword
+    self.assertEqual(response_by_id.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [], 'current_page': 1[43 chars]ess'}
+- {'code': 102, 'data': None, 'msg': '请重新登录'}
++ {'code': 0,
++  'data': {'current_page': 1, 'data': [], 'per_page': 10, 'total': 0},
++  'msg': 'success'}
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 191, in test_index_no_result_by_keyword
+    self.assertEqual(response_by_id.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [], 'current_page': 1[43 chars]ess'}
+- {'code': 102, 'data': None, 'msg': '请重新登录'}
++ {'code': 0,
++  'data': {'current_page': 1, 'data': [], 'per_page': 10, 'total': 0},
++  'msg': 'success'}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.13' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_year</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.13')" >
+        fail</a>
+
+    <div id='div_ft3.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.13: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 235, in test_index_year
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 235, in test_index_year
+    self.assertEqual(jsonData['code'], 0)
+AssertionError: 102 != 0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.14' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.14')" >
+        fail</a>
+
+    <div id='div_ft3.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.14: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 31, in test_message_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454129, '[11317 chars]ess'}
+Diff is 26418 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 31, in test_message_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454129, '[11317 chars]ess'}
+Diff is 26418 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.15' class='none'>
+    <td class='failCase'><div class='testcase'>test_review_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.15')" >
+        fail</a>
+
+    <div id='div_ft3.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.15: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 77, in test_review_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454218, '[4256 chars]ess'}
+Diff is 10716 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 77, in test_review_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181454218, '[4256 chars]ess'}
+Diff is 10716 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.16' class='none'>
+    <td class='failCase'><div class='testcase'>test_testdata_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.16')" >
+        fail</a>
+
+    <div id='div_ft3.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.16: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 88, in test_testdata_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181456497, '[4669 chars]ess'}
+Diff is 10835 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 88, in test_testdata_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'code': 102, 'data': None, 'msg': '请重新登录'} != {'code': 0, 'data': {'data': [{'id': 1181456497, '[4669 chars]ess'}
+Diff is 10835 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.17' class='none'>
+    <td class='errorCase'><div class='testcase'>test_update_data</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.17')" >
+        error</a>
+
+    <div id='div_ft3.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.17: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 366, in test_update_data
+    actual_tags = response_update_for_check_tags_jsonData['data']['data'][0]['tags']
+TypeError: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 366, in test_update_data
+    actual_tags = response_update_for_check_tags_jsonData['data']['data'][0]['tags']
+TypeError: 'NoneType' object is not subscriptable
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>case.login.TestUserLogin</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',2)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLogin</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLoginOut</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>34</td>
+    <td>2</td>
+    <td>26</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

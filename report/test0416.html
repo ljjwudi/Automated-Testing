@@ -1,0 +1,2395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>My Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>My Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2024-05-21 10:01:02</p>
+<p class='attribute'><strong>Duration:</strong> 0:04:24.492263</p>
+<p class='attribute'><strong>Status:</strong> Pass 100 Failure 25 Error 19</p>
+
+<p class='description'>This demonstrates the report output by HTMLTestRunner.</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>case.Qa.TestQA</td>
+    <td>22</td>
+    <td>22</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',22)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_qa_combination</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_qa_by_question</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_qa_by_answer</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_new_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_export_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_check_relation</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_edit_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_qa_close</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_qa_open</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_qa_range</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_qa_label</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_check</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_close_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_open_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_qa_id</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_import_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_ext_import_qa</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_custom_import_type1</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_custom_import_type2</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_down_result</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.22' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_qa_by_pagesize</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>case.HomePage.TestHomePage</td>
+    <td>8</td>
+    <td>7</td>
+    <td>1</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',8)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_AllProjects</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_BasicInfo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        fail</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 68, in test_BasicInfo
+    self.assertEqual(expect_res, response.json())
+AssertionError: {'cod[168 chars]'所有人', '所有人-lijj转人工'], 'roles': ['全部权限都有'], 'e[34 chars]ess'} != {'cod[168 chars]'所有人'], 'roles': ['全部权限都有'], 'effective_date':[19 chars]ess'}
+  {'code': 0,
+   'data': {'user_info': {'avatar': '',
+                          'department': '',
+                          'effective_date': '',
+-                         'groups': ['所有人', '所有人-lijj转人工'],
+?                                         ---------------
+
++                         'groups': ['所有人'],
+                          'id': 310039,
+                          'mobile': '17302082223',
+                          'name': 'lijj',
+                          'nickname': 'lijj',
+                          'roles': ['全部权限都有'],
+                          'username': 'lijj'}},
+   'msg': 'success'}
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\HomePage.py", line 68, in test_BasicInfo
+    self.assertEqual(expect_res, response.json())
+AssertionError: {'cod[168 chars]'所有人', '所有人-lijj转人工'], 'roles': ['全部权限都有'], 'e[34 chars]ess'} != {'cod[168 chars]'所有人'], 'roles': ['全部权限都有'], 'effective_date':[19 chars]ess'}
+  {'code': 0,
+   'data': {'user_info': {'avatar': '',
+                          'department': '',
+                          'effective_date': '',
+-                         'groups': ['所有人', '所有人-lijj转人工'],
+?                                         ---------------
+
++                         'groups': ['所有人'],
+                          'id': 310039,
+                          'mobile': '17302082223',
+                          'name': 'lijj',
+                          'nickname': 'lijj',
+                          'roles': ['全部权限都有'],
+                          'username': 'lijj'}},
+   'msg': 'success'}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Config</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Corner</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Count</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_IsLogged</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Permissions</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_PhoneLine</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>case.RecordManagement.TestRecordManagement</td>
+    <td>17</td>
+    <td>8</td>
+    <td>9</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',17)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_CalloutTaskList</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_MessageProjectList</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_OutboundTaskList</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_TableHeader</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_TelephoneProjectList</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft3.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_call_index_by_AutoOutBound</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.6')" >
+        fail</a>
+
+    <div id='div_ft3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 95, in test_call_index_by_AutoOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[6513 chars][], 'trigger_event_node': [], 'feedback': '', [732 chars]ess'} != {'cod[6513 chars][], 'feedback': '', 'audio_path': 'https://min[706 chars]ess'}
+Diff is 18640 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 95, in test_call_index_by_AutoOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[6513 chars][], 'trigger_event_node': [], 'feedback': '', [732 chars]ess'} != {'cod[6513 chars][], 'feedback': '', 'audio_path': 'https://min[706 chars]ess'}
+Diff is 18640 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_call_index_by_HandOutBound</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.7')" >
+        fail</a>
+
+    <div id='div_ft3.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 77, in test_call_index_by_HandOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3406 chars][], 'trigger_event_node': [], 'feedback': '', [742 chars]ess'} != {'cod[3406 chars][], 'feedback': '', 'audio_path': 'https://min[716 chars]ess'}
+Diff is 10059 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 77, in test_call_index_by_HandOutBound
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3406 chars][], 'trigger_event_node': [], 'feedback': '', [742 chars]ess'} != {'cod[3406 chars][], 'feedback': '', 'audio_path': 'https://min[716 chars]ess'}
+Diff is 10059 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_call_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.8')" >
+        fail</a>
+
+    <div id='div_ft3.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.8: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 59, in test_call_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3295 chars][], 'trigger_event_node': [], 'feedback': '', [739 chars]ess'} != {'cod[3295 chars][], 'feedback': '', 'audio_path': 'https://min[713 chars]ess'}
+Diff is 9945 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 59, in test_call_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3295 chars][], 'trigger_event_node': [], 'feedback': '', [739 chars]ess'} != {'cod[3295 chars][], 'feedback': '', 'audio_path': 'https://min[713 chars]ess'}
+Diff is 9945 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_export_record</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft3.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_by_project_closed</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.10')" >
+        fail</a>
+
+    <div id='div_ft3.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.10: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 151, in test_index_by_project_closed
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[4771 chars][], 'trigger_event_node': [], 'feedback': '', [311 chars]ess'} != {'cod[4771 chars][], 'feedback': '', 'audio_path': '(null)', 'a[285 chars]ess'}
+Diff is 12578 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 151, in test_index_by_project_closed
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[4771 chars][], 'trigger_event_node': [], 'feedback': '', [311 chars]ess'} != {'cod[4771 chars][], 'feedback': '', 'audio_path': '(null)', 'a[285 chars]ess'}
+Diff is 12578 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_by_project_deleted</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.11')" >
+        fail</a>
+
+    <div id='div_ft3.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.11: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 169, in test_index_by_project_deleted
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3291 chars][], 'trigger_event_node': [], 'feedback': '', [207 chars]ess'} != {'cod[3291 chars][], 'feedback': '', 'audio_path': '(null)', 'a[181 chars]ess'}
+Diff is 8401 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 169, in test_index_by_project_deleted
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3291 chars][], 'trigger_event_node': [], 'feedback': '', [207 chars]ess'} != {'cod[3291 chars][], 'feedback': '', 'audio_path': '(null)', 'a[181 chars]ess'}
+Diff is 8401 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_index_no_result_by_keyword</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft3.13' class='none'>
+    <td class='failCase'><div class='testcase'>test_index_year</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.13')" >
+        fail</a>
+
+    <div id='div_ft3.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.13: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 443, in test_index_year
+    self.assertEqual(jsonData["data"]["total"], 12019)  # 断言data中total数量
+AssertionError: 12003 != 12019
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 443, in test_index_year
+    self.assertEqual(jsonData["data"]["total"], 12019)  # 断言data中total数量
+AssertionError: 12003 != 12019
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.14' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.14')" >
+        fail</a>
+
+    <div id='div_ft3.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.14: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 41, in test_message_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3733 chars][], 'trigger_event_node': [], 'feedback': '', [7661 chars]ess'} != {'cod[3733 chars][], 'feedback': '', 'audio_path': '(null)', 'a[7583 chars]ess'}
+Diff is 26516 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 41, in test_message_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3733 chars][], 'trigger_event_node': [], 'feedback': '', [7661 chars]ess'} != {'cod[3733 chars][], 'feedback': '', 'audio_path': '(null)', 'a[7583 chars]ess'}
+Diff is 26516 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.15' class='none'>
+    <td class='failCase'><div class='testcase'>test_review_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.15')" >
+        fail</a>
+
+    <div id='div_ft3.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.15: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 115, in test_review_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3322 chars][], 'trigger_event_node': [], 'feedback': '', [959 chars]ess'} != {'cod[3322 chars][], 'feedback': '', 'audio_path': 'https://min[933 chars]ess'}
+Diff is 10718 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 115, in test_review_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[3322 chars][], 'trigger_event_node': [], 'feedback': '', [959 chars]ess'} != {'cod[3322 chars][], 'feedback': '', 'audio_path': 'https://min[933 chars]ess'}
+Diff is 10718 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.16' class='none'>
+    <td class='failCase'><div class='testcase'>test_testdata_index_combination</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.16')" >
+        fail</a>
+
+    <div id='div_ft3.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.16: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 133, in test_testdata_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[4487 chars][], 'trigger_event_node': [], 'feedback': '', [207 chars]ess'} != {'cod[4487 chars][], 'feedback': '', 'audio_path': '(null)', 'a[181 chars]ess'}
+Diff is 10837 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\RecordManagement.py", line 133, in test_testdata_index_combination
+    self.assertEqual(response.json(), expect_res)
+AssertionError: {'cod[4487 chars][], 'trigger_event_node': [], 'feedback': '', [207 chars]ess'} != {'cod[4487 chars][], 'feedback': '', 'audio_path': '(null)', 'a[181 chars]ess'}
+Diff is 10837 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_update_data</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>case.Login.TestUserLogin</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',2)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLogin</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>testLoginOut</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='failClass'>
+    <td>case.SynonymWords.TestSynonymWords</td>
+    <td>21</td>
+    <td>15</td>
+    <td>6</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',21)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_check_dict_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_check_same_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete_synonym_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_down_result</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.4')" >
+        fail</a>
+
+    <div id='div_ft5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 308, in test_down_result
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: "[{'导入结果':'导入失败','失败原因':'流程名不存在','流程名':'无该流程树1111',[928 chars]''}]" != "[{'导入结果': '导入失败', '失败原因': '流程名不存在', '流程名': '无该流程树1[1047 chars]''}]"
+Diff is 2090 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 308, in test_down_result
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: "[{'导入结果':'导入失败','失败原因':'流程名不存在','流程名':'无该流程树1111',[928 chars]''}]" != "[{'导入结果': '导入失败', '失败原因': '流程名不存在', '流程名': '无该流程树1[1047 chars]''}]"
+Diff is 2090 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_duplicate_move_task_1</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_duplicate_move_task_2</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_duplicate_move_task_report</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.7')" >
+        fail</a>
+
+    <div id='div_ft5.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 823, in test_duplicate_move_task_report
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: '处理结果,失败原因,词集名,归属流程成功,,自动化测试同义词,自动化测试流程树' != '处理结果,失败原因,词集名,归属流程\n成功,,自动化测试同义词,自动化测试流程树\n'
+- 处理结果,失败原因,词集名,归属流程成功,,自动化测试同义词,自动化测试流程树
++ 处理结果,失败原因,词集名,归属流程
+成功,,自动化测试同义词,自动化测试流程树
+
+?                   +                     
++
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 823, in test_duplicate_move_task_report
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: '处理结果,失败原因,词集名,归属流程成功,,自动化测试同义词,自动化测试流程树' != '处理结果,失败原因,词集名,归属流程\n成功,,自动化测试同义词,自动化测试流程树\n'
+- 处理结果,失败原因,词集名,归属流程成功,,自动化测试同义词,自动化测试流程树
++ 处理结果,失败原因,词集名,归属流程
+成功,,自动化测试同义词,自动化测试流程树
+
+?                   +                     
++
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_export_words</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.8')" >
+        fail</a>
+
+    <div id='div_ft5.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.8: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 350, in test_export_words
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: "[{'导入结果':'','失败原因':'','流程名':'自动化测试流程树','词集名':'闲聊',[771 chars]L'}]" != "[{'导入结果': '', '失败原因': '', '流程名': '自动化测试流程树', '词集名'[920 chars]L'}]"
+Diff is 1806 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 350, in test_export_words
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: "[{'导入结果':'','失败原因':'','流程名':'自动化测试流程树','词集名':'闲聊',[771 chars]L'}]" != "[{'导入结果': '', '失败原因': '', '流程名': '自动化测试流程树', '词集名'[920 chars]L'}]"
+Diff is 1806 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_dictionary_projects</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_query_ids</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_import_status</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_import_synonym_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_check_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_copy</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft5.15' class='none'>
+    <td class='failCase'><div class='testcase'>test_new_synonym_words</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.15')" >
+        fail</a>
+
+    <div id='div_ft5.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.15: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 118, in test_new_synonym_words
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: "['自动化测试1','自动化测试2','自动化测试3']" != "['自动化测试1', '自动化测试2', '自动化测试3']"
+- ['自动化测试1','自动化测试2','自动化测试3']
++ ['自动化测试1', '自动化测试2', '自动化测试3']
+?           +         +
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 118, in test_new_synonym_words
+    self.assertEqual(expect_res, str(actual_res))
+AssertionError: "['自动化测试1','自动化测试2','自动化测试3']" != "['自动化测试1', '自动化测试2', '自动化测试3']"
+- ['自动化测试1','自动化测试2','自动化测试3']
++ ['自动化测试1', '自动化测试2', '自动化测试3']
+?           +         +
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.16' class='none'>
+    <td class='failCase'><div class='testcase'>test_screening_view</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.16')" >
+        fail</a>
+
+    <div id='div_ft5.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.16: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 407, in test_screening_view
+    self.assertEqual(actual_res, expect_res)
+AssertionError: {'cod[233 chars]04-18 17:57:28', 'update_time': '2022-04-18 17[515 chars]ess'} != {'cod[233 chars]04-1817:57:28', 'update_time': '2022-04-1817:5[509 chars]ess'}
+Diff is 2863 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 407, in test_screening_view
+    self.assertEqual(actual_res, expect_res)
+AssertionError: {'cod[233 chars]04-18 17:57:28', 'update_time': '2022-04-18 17[515 chars]ess'} != {'cod[233 chars]04-1817:57:28', 'update_time': '2022-04-1817:5[509 chars]ess'}
+Diff is 2863 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.17' class='none'>
+    <td class='failCase'><div class='testcase'>test_screening_view_export</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.17')" >
+        fail</a>
+
+    <div id='div_ft5.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.17: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 426, in test_screening_view_export
+    self.assertEqual(expect_res, content)
+AssertionError: '"导入结[23 chars]词集内容""","","通用","电脑品牌","MAC""","","","","联想"""[207 chars]ELL"' != '"导入结[23 chars]词集内容"\n"","","通用","电脑品牌","MAC"\n"","","","","联[237 chars]L"\n'
+Diff is 893 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\SynonymWords.py", line 426, in test_screening_view_export
+    self.assertEqual(expect_res, content)
+AssertionError: '"导入结[23 chars]词集内容""","","通用","电脑品牌","MAC""","","","","联想"""[207 chars]ELL"' != '"导入结[23 chars]词集内容"\n"","","通用","电脑品牌","MAC"\n"","","","","联[237 chars]L"\n'
+Diff is 893 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt5.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_project</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_word</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_words_count</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>case.SimilarWords.TestSimilarWords</td>
+    <td>18</td>
+    <td>18</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',18)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_check_dict_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete_synonym_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_down_result</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_duplicate_move_task_1</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_duplicate_move_task_2</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_duplicate_move_task_report</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_export_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_query_ids</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_import_similar_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_import_status</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_check_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_copy</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_new_similar_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_open_associate_synonym</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_screening_view</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_project</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_word</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>case.HotWords.TestHotWords</td>
+    <td>17</td>
+    <td>17</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',17)">Detail</a></td>
+</tr>
+
+<tr id='pt7.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_check_hotWords_dict_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_copy_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_delete_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_down_result_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_edit_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_export_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_hotWords_query_ids</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_import_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mul_delete_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_new_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_have_replaceWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_by_without_replaceWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_combination_hotWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_combination_replaceWords</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_hotWords_by_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_hotWords_by_project</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt7.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_search_hotWords_by_words</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>case.Project.TestProject</td>
+    <td>39</td>
+    <td>11</td>
+    <td>9</td>
+    <td>19</td>
+    <td><a href="javascript:showClassDetail('c8',39)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_check_project_name</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_copy_project</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.2')" >
+        error</a>
+
+    <div id='div_ft8.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 239, in test_copy_project
+    project_id = res_search_json["data"]["paginate"]["data"][0]["id"]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 239, in test_copy_project
+    project_id = res_search_json["data"]["paginate"]["data"][0]["id"]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_copy_project_hotWords</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.3')" >
+        error</a>
+
+    <div id='div_ft8.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 377, in test_copy_project_hotWords
+    delete_project(
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 377, in test_copy_project_hotWords
+    delete_project(
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.4' class='none'>
+    <td class='errorCase'><div class='testcase'>test_copy_project_similarWords</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.4')" >
+        error</a>
+
+    <div id='div_ft8.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 334, in test_copy_project_similarWords
+    delete_project(
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 334, in test_copy_project_similarWords
+    delete_project(
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_copy_project_synonymWords</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.5')" >
+        error</a>
+
+    <div id='div_ft8.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 294, in test_copy_project_synonymWords
+    delete_project(
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 294, in test_copy_project_synonymWords
+    delete_project(
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.6' class='none'>
+    <td class='errorCase'><div class='testcase'>test_del_navigation</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.6')" >
+        error</a>
+
+    <div id='div_ft8.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 1051, in test_del_navigation
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 1051, in test_del_navigation
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_del_project</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.7')" >
+        error</a>
+
+    <div id='div_ft8.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 442, in test_del_project
+    delete_project(section_dict['data_file'],
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 442, in test_del_project
+    delete_project(section_dict['data_file'],
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_del_project_and_words</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.8')" >
+        error</a>
+
+    <div id='div_ft8.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.8: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 398, in test_del_project_and_words
+    delete_project(section_dict['data_file'],
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 398, in test_del_project_and_words
+    delete_project(section_dict['data_file'],
+  File "C:\Users\Administrator\PycharmProjects\demo\common\common_api.py", line 62, in delete_project
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_del_transferHuman_config</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.10' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_endSession</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.10')" >
+        error</a>
+
+    <div id='div_ft8.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.10: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 693, in test_edit_endSession
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 693, in test_edit_endSession
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.11' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_overConcurrency_hangUp</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.11')" >
+        error</a>
+
+    <div id='div_ft8.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.11: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 934, in test_edit_overConcurrency_hangUp
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 934, in test_edit_overConcurrency_hangUp
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_overConcurrency_transferHuman</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.12')" >
+        error</a>
+
+    <div id='div_ft8.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.12: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 885, in test_edit_overConcurrency_transferHuman
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 885, in test_edit_overConcurrency_transferHuman
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.13' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_repeatWords</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.13')" >
+        error</a>
+
+    <div id='div_ft8.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.13: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 502, in test_edit_repeatWords
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 502, in test_edit_repeatWords
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.14' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_slot</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.14')" >
+        error</a>
+
+    <div id='div_ft8.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.14: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 740, in test_edit_slot
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 740, in test_edit_slot
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.15' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_sms</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.15')" >
+        error</a>
+
+    <div id='div_ft8.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.15: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 595, in test_edit_sms
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 595, in test_edit_sms
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.16' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_stopWords</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.16')" >
+        error</a>
+
+    <div id='div_ft8.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.16: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 550, in test_edit_stopWords
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 550, in test_edit_stopWords
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.17' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_timeHandle_hangUp</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.17')" >
+        error</a>
+
+    <div id='div_ft8.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.17: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 838, in test_edit_timeHandle_hangUp
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 838, in test_edit_timeHandle_hangUp
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.18' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_timeHandle_jumpNode</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.18')" >
+        error</a>
+
+    <div id='div_ft8.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.18: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 789, in test_edit_timeHandle_jumpNode
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 789, in test_edit_timeHandle_jumpNode
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_edit_transfer_human_config</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.20' class='none'>
+    <td class='errorCase'><div class='testcase'>test_edit_waiting</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.20')" >
+        error</a>
+
+    <div id='div_ft8.20' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.20').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.20: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 644, in test_edit_waiting
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 644, in test_edit_waiting
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_WorkingTime</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.22' class='none'>
+    <td class='failCase'><div class='testcase'>test_get_global_config</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.22')" >
+        fail</a>
+
+    <div id='div_ft8.22' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.22').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.22: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 485, in test_get_global_config
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[930 chars]up'}}}, 'sms_templates': {'sms_tunnel': {'id':[100 chars]ess'} != {'cod[930 chars]up'}}, 'server_error_handle': {'speech': '系统繁忙[179 chars]ess'}
+Diff is 2699 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 485, in test_get_global_config
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[930 chars]up'}}}, 'sms_templates': {'sms_tunnel': {'id':[100 chars]ess'} != {'cod[930 chars]up'}}, 'server_error_handle': {'speech': '系统繁忙[179 chars]ess'}
+Diff is 2699 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.23' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_navigation</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.24' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_nonWorkingTime</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.25' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_project_config</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.26' class='none'>
+    <td class='failCase'><div class='testcase'>test_get_smsService</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.26')" >
+        fail</a>
+
+    <div id='div_ft8.26' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.26').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.26: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 1143, in test_get_smsService
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[341 chars]lan'}], 'msg': 'success'} != {'cod[341 chars]lan'}, {'id': 30005, 'companyId': 10000, 'name[44 chars]ess'}
+  {'code': 0,
+   'data': [{'companyId': 0, 'driver': 'log', 'id': 1, 'name': '日志模式（仅用于调试）'},
+            {'companyId': 10000, 'driver': 'pg', 'id': 2, 'name': '宝洁'},
+            {'companyId': 10000, 'driver': 'qiyu', 'id': 9, 'name': '七鱼'},
+            {'companyId': 10000, 'driver': 'weLink', 'id': 30002, 'name': '微网'},
+            {'companyId': 10000,
+             'driver': 'chuanglan',
+             'id': 30004,
+-            'name': '创蓝'}],
+?                         -
+
++            'name': '创蓝'},
++           {'companyId': 10000, 'driver': 'aliyun', 'id': 30005, 'name': '阿里云'}],
+   'msg': 'success'}
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 1143, in test_get_smsService
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[341 chars]lan'}], 'msg': 'success'} != {'cod[341 chars]lan'}, {'id': 30005, 'companyId': 10000, 'name[44 chars]ess'}
+  {'code': 0,
+   'data': [{'companyId': 0, 'driver': 'log', 'id': 1, 'name': '日志模式（仅用于调试）'},
+            {'companyId': 10000, 'driver': 'pg', 'id': 2, 'name': '宝洁'},
+            {'companyId': 10000, 'driver': 'qiyu', 'id': 9, 'name': '七鱼'},
+            {'companyId': 10000, 'driver': 'weLink', 'id': 30002, 'name': '微网'},
+            {'companyId': 10000,
+             'driver': 'chuanglan',
+             'id': 30004,
+-            'name': '创蓝'}],
+?                         -
+
++            'name': '创蓝'},
++           {'companyId': 10000, 'driver': 'aliyun', 'id': 30005, 'name': '阿里云'}],
+   'msg': 'success'}
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt8.27' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_get_tts</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.28' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_new_WorkingTime</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.29' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_new_nonWorkingTime_hangUp</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt8.30' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_new_nonWorkingTime_jumpNode</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft8.31' class='none'>
+    <td class='errorCase'><div class='testcase'>test_new_project</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.31')" >
+        error</a>
+
+    <div id='div_ft8.31' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.31').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.31: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 195, in test_new_project
+    project_id = res_search_json["data"]["paginate"]["data"][0]["id"]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 195, in test_new_project
+    project_id = res_search_json["data"]["paginate"]["data"][0]["id"]
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.32' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byBelongers</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.32')" >
+        fail</a>
+
+    <div id='div_ft8.32' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.32').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.32: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 76, in test_search_project_byBelongers
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[209 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[308 chars]ess'} != {'cod[209 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[306 chars]ess'}
+Diff is 1444 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 76, in test_search_project_byBelongers
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[209 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[308 chars]ess'} != {'cod[209 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[306 chars]ess'}
+Diff is 1444 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.33' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byId</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.33')" >
+        fail</a>
+
+    <div id='div_ft8.33' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.33').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.33: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 56, in test_search_project_byId
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[209 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[308 chars]ess'} != {'cod[209 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[306 chars]ess'}
+Diff is 1444 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 56, in test_search_project_byId
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[209 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[308 chars]ess'} != {'cod[209 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[306 chars]ess'}
+Diff is 1444 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.34' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byKnowledge</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.34')" >
+        fail</a>
+
+    <div id='div_ft8.34' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.34').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.34: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 156, in test_search_project_byKnowledge
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[211 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[304 chars]ess'} != {'cod[211 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[302 chars]ess'}
+Diff is 1442 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 156, in test_search_project_byKnowledge
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[211 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[304 chars]ess'} != {'cod[211 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[302 chars]ess'}
+Diff is 1442 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.35' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byName</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.35')" >
+        fail</a>
+
+    <div id='div_ft8.35' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.35').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.35: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 38, in test_search_project_byName
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[209 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[763 chars]ess'} != {'cod[209 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[761 chars]ess'}
+Diff is 2528 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 38, in test_search_project_byName
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[209 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[763 chars]ess'} != {'cod[209 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[761 chars]ess'}
+Diff is 2528 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.36' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byOpenStatus_all</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.36')" >
+        fail</a>
+
+    <div id='div_ft8.36' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.36').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.36: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 96, in test_search_project_byOpenStatus_all
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[336 chars]y': '衣着装扮', 'nlp_version': 2, 'tts': {'role': [3383 chars]ess'} != {'cod[336 chars]y': '', 'nlp_version': 2, 'tts': {'role': 'yif[3369 chars]ess'}
+Diff is 9643 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 96, in test_search_project_byOpenStatus_all
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[336 chars]y': '衣着装扮', 'nlp_version': 2, 'tts': {'role': [3383 chars]ess'} != {'cod[336 chars]y': '', 'nlp_version': 2, 'tts': {'role': 'yif[3369 chars]ess'}
+Diff is 9643 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.37' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byOpenStatus_close</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.37')" >
+        fail</a>
+
+    <div id='div_ft8.37' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.37').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.37: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 136, in test_search_project_byOpenStatus_close
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[336 chars]y': '衣着装扮', 'nlp_version': 2, 'tts': {'role': [172 chars]ess'} != {'cod[336 chars]y': '', 'nlp_version': 2, 'tts': {'role': 'yif[168 chars]ess'}
+Diff is 1348 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 136, in test_search_project_byOpenStatus_close
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[336 chars]y': '衣着装扮', 'nlp_version': 2, 'tts': {'role': [172 chars]ess'} != {'cod[336 chars]y': '', 'nlp_version': 2, 'tts': {'role': 'yif[168 chars]ess'}
+Diff is 1348 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.38' class='none'>
+    <td class='failCase'><div class='testcase'>test_search_project_byOpenStatus_open</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.38')" >
+        fail</a>
+
+    <div id='div_ft8.38' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.38').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.38: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 116, in test_search_project_byOpenStatus_open
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[211 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[3054 chars]ess'} != {'cod[211 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[3044 chars]ess'}
+Diff is 8455 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 116, in test_search_project_byOpenStatus_open
+    self.assertEqual(expect_res, actual_res)
+AssertionError: {'cod[211 chars]58, 113, 130, 310035], 'belongerName': '景杰', '[3054 chars]ess'} != {'cod[211 chars]58, 180084, 310035], 'belongerName': '景杰', 'up[3044 chars]ess'}
+Diff is 8455 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft8.39' class='none'>
+    <td class='errorCase'><div class='testcase'>test_set_navigation</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft8.39')" >
+        error</a>
+
+    <div id='div_ft8.39' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft8.39').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft8.39: Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 998, in test_set_navigation
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Administrator\PycharmProjects\demo\case\Project.py", line 998, in test_set_navigation
+    project_id = res_search_json['data']['paginate']['data'][0]['id']
+IndexError: list index out of range
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>144</td>
+    <td>100</td>
+    <td>25</td>
+    <td>19</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

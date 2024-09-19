@@ -1,0 +1,23 @@
+2024-02-20 16:46:03,453 - interface_test - DEBUG - sss
+2024-02-20 16:46:03,453 - interface_test - INFO - This is an info message
+2024-02-20 16:46:03,453 - interface_test - WARNING - This is a warning message
+2024-02-20 16:46:03,453 - interface_test - ERROR - This is an error message
+2024-02-20 16:46:03,453 - interface_test - CRITICAL - This is a critical message
+2024-02-20 16:55:45,856 - interface_test - DEBUG - sss
+2024-02-20 16:55:45,856 - interface_test - INFO - This is an info message
+2024-02-20 16:55:45,856 - interface_test - WARNING - This is a warning message
+2024-02-20 16:55:45,856 - interface_test - ERROR - This is an error message
+2024-02-20 16:55:45,862 - interface_test - CRITICAL - This is a critical message
+2024-03-27 16:17:00,071 - interface_test - DEBUG - sss
+2024-03-27 16:17:00,071 - interface_test - INFO - This is an info message
+2024-03-27 16:17:00,071 - interface_test - WARNING - This is a warning message
+2024-03-27 16:17:00,071 - interface_test - ERROR - This is an error message
+2024-03-27 16:17:00,071 - interface_test - CRITICAL - This is a critical message
+2024-06-25 16:10:31,234 - interface_test - INFO - 测试用例：测试用例
+2024-06-25 16:10:31,234 - interface_test - INFO - url：http://www.baidu.com
+2024-06-25 16:10:31,235 - interface_test - INFO - 期望结果：成功
+2024-06-25 16:10:31,235 - interface_test - INFO - 实际结果：成功
+2024-06-25 16:21:19,060 - interface_test - INFO - 测试用例：测试用例
+2024-06-25 16:21:19,061 - interface_test - INFO - url：http://www.baidu.com
+2024-06-25 16:21:19,061 - interface_test - INFO - 期望结果：成功
+2024-06-25 16:21:19,061 - interface_test - INFO - 实际结果：成功
